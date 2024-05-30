@@ -1,24 +1,25 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface ItemsNewsItem extends Schema.Component {
-  collectionName: 'components_items_news_items';
+export interface ItemsTeam extends Schema.Component {
+  collectionName: 'components_items_teams';
   info: {
-    displayName: 'news-item';
-    icon: 'book';
+    displayName: 'Team';
+    icon: 'globe';
     description: '';
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
-    content: Attribute.Blocks & Attribute.Required;
-    date: Attribute.Date & Attribute.Required;
-    image: Attribute.Media;
+    logo: Attribute.Media;
+    team: Attribute.Enumeration<
+      ['Nissa', 'Trapani', 'Palermo', 'Aspra', 'Siracusa']
+    > &
+      Attribute.Required;
   };
 }
 
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'items.news-item': ItemsNewsItem;
+      'items.team': ItemsTeam;
     }
   }
 }

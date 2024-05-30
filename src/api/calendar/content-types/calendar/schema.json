@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "calendars",
+  "info": {
+    "singularName": "calendar",
+    "pluralName": "calendars",
+    "displayName": "Calendar"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "result": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "live",
+        "completed",
+        "next",
+        "interrupted"
+      ],
+      "required": true,
+      "default": "next"
+    },
+    "homeTeam": {
+      "type": "component",
+      "repeatable": false,
+      "component": "items.team"
+    },
+    "awayTeam": {
+      "type": "component",
+      "repeatable": false,
+      "component": "items.team"
+    }
+  }
+}

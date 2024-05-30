@@ -396,6 +396,44 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   };
 }
 
+export interface ApiCalendarCalendar extends Schema.CollectionType {
+  collectionName: 'calendars';
+  info: {
+    singularName: 'calendar';
+    pluralName: 'calendars';
+    displayName: 'Calendar';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    date: Attribute.Date & Attribute.Required;
+    result: Attribute.String;
+    status: Attribute.Enumeration<
+      ['live', 'completed', 'next', 'interrupted']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'next'>;
+    homeTeam: Attribute.Component<'items.team'>;
+    awayTeam: Attribute.Component<'items.team'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::calendar.calendar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::calendar.calendar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -833,6 +871,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::article.article': ApiArticleArticle;
+      'api::calendar.calendar': ApiCalendarCalendar;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
