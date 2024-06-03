@@ -10,7 +10,7 @@ const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::article.article', ({ strapi }) => ({
   async find(ctx) {
-    const entries = await strapi.entityService.findOne(
+    const entries = await strapi.entityService.findMany(
       'api::article.article',
       {
         // to avoid strange queries in FE
