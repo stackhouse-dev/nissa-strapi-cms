@@ -18,6 +18,7 @@ module.exports = createCoreController('api::article.article', ({ strapi }) => ({
       }
     );
     // here we can manipulate response
+    console.log('entries', entries)
     const sanitizedEntries = await this.sanitizeOutput(entries, ctx);
     return sanitizedEntries
   },

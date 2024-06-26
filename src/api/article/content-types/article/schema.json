@@ -16,10 +16,6 @@
       "type": "string",
       "required": true
     },
-    "content": {
-      "type": "blocks",
-      "required": true
-    },
     "date": {
       "type": "date",
       "required": true
@@ -34,6 +30,12 @@
         "videos",
         "audios"
       ]
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "content2": {
+      "type": "blocks"
     }
   }
 }

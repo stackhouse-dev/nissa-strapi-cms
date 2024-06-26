@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_player_stats_player_statistiches",
+  "info": {
+    "displayName": "Player Season Stats",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "stagione": {
+      "type": "string"
+    },
+    "squadra": {
+      "type": "string"
+    },
+    "categoria": {
+      "type": "string"
+    },
+    "presenze": {
+      "type": "string"
+    },
+    "gol": {
+      "type": "integer"
+    }
+  }
+}

@@ -801,9 +801,10 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
-    content: Attribute.Blocks & Attribute.Required;
     date: Attribute.Date & Attribute.Required;
     coverImage: Attribute.Media & Attribute.Required;
+    content: Attribute.RichText;
+    content2: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -828,6 +829,7 @@ export interface ApiCalendarCalendar extends Schema.CollectionType {
     singularName: 'calendar';
     pluralName: 'calendars';
     displayName: 'Calendar';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -842,6 +844,7 @@ export interface ApiCalendarCalendar extends Schema.CollectionType {
       Attribute.DefaultTo<'next'>;
     homeTeam: Attribute.Component<'items.team'>;
     awayTeam: Attribute.Component<'items.team'>;
+    hours: Attribute.Time;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -872,11 +875,15 @@ export interface ApiTeamTeam extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String & Attribute.Required;
-    surname: Attribute.String & Attribute.Required;
-    description: Attribute.RichText;
-    photo: Attribute.Media;
-    role: Attribute.String & Attribute.Required;
+    nome: Attribute.String & Attribute.Required;
+    cognome: Attribute.String & Attribute.Required;
+    image: Attribute.Media;
+    dataNascita: Attribute.Date;
+    ruolo: Attribute.Enumeration<
+      ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante']
+    >;
+    stats: Attribute.Component<'items.player-statistiche', true>;
+    numeroMaglia: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

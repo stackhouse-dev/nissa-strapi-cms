@@ -4,7 +4,8 @@
   "info": {
     "singularName": "calendar",
     "pluralName": "calendars",
-    "displayName": "Calendar"
+    "displayName": "Calendar",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -38,6 +39,9 @@
       "type": "component",
       "repeatable": false,
       "component": "items.team"
+    },
+    "hours": {
+      "type": "time"
     }
   }
 }
